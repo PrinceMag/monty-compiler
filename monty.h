@@ -43,7 +43,6 @@ typedef struct instruction_s
 
 extern stack_t stack;
 ssize_t getline(char **lineptr, size_t *n, FILE *stream);
-global_vars_t GLOBAL_var;
 
 
 /* helper functions */
@@ -51,24 +50,29 @@ void parse(char *fileName, stack_t **head);
 void dropnl(char *src);
 void exe_opn(char *operation, stack_t **head, unsigned int line_number);
 int _isdigit(char *str);
-void free_dataStructure(void);
+void freeDataStructure(void);
 void free_src_code_line(void);
 
 /* instructions */
 void do_push(stack_t **stack, unsigned int line_number);
 void do_pall(stack_t **stack, unsigned int line_number);
 void do_pint(stack_t **stack, unsigned int line_number);
-void do_pop(stack_t **stack, unsigned int line_number);
-void do_add(stack_t **stack, unsigned int line_number);
-void do_sub(stack_t **stack, unsigned int line_number);
-void do_mul(stack_t **stack, unsigned int line_number);
-void do_div(stack_t **stack, unsigned int line_number);
-void do_mod(stack_t **stack, unsigned int line_number);
-void do_swap(stack_t **stack, unsigned int line_number);
-void do_nop(stack_t **stack, unsigned int line_number);
-void do_pchar(stack_t **stack, unsigned int line_number);
-void do_rotl(stack_t **stack, unsigned int line_number);
-void do_pstr(stack_t **stack, unsigned int line_number);
-void do_rotr(stack_t **stack, unsigned int line_number);
+
+/**
+ * struct global_vars_s - global structure
+ * @top: points to the top of the stack
+ * @src_code_p: points to the file pointer
+ * @line: points to the current line of the script
+ *
+ */
+
+typedef struct global_vars_s
+{
+	stack_t **top;
+	FILE *src_code_p;
+	char *line;
+} global_vars_t;
+
+extern global_vars_t GLOBAL_var;
 
 #endif /* MONTY_H */

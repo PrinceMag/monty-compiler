@@ -18,20 +18,20 @@ void parse(char *fileName, stack_t **head UNUSED)
 	src_code = fopen(fileName, "r");
 	if (src_code == NULL)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", fileName);
+		fprintf(stderr, "Error: Can't open file %s\n", fileName);
 		exit(EXIT_FAILURE);
 	}
 
-	GLOBAL_var.src_code = src_code;
+	GLOBAL_var.src_code_p = src_code;
 
-	atexit(free_dataStructure);
+	atexit(freeDataStructure);
 
 	while ((read = getline(&line, &len, src_code)) != -1) 
 	{
 		GLOBAL_var.line = line;
 		op = strtok(line, DELIMS);
 		if (op != NULL)
-			exe_operation(op, head, lineNumber);
+			exe_opn(op, head, lineNumber);
 		lineNumber++;
 	}
 
