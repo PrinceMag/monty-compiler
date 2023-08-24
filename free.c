@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * free_dataStructure - function that frees a data structure
+ * freeDataStructure - function that frees a data structure
  *
  * Return: void
  */
@@ -27,7 +27,7 @@ void freeDataStructure(void)
  */
 void free_src_code_line(void)
 {
-	fclose(GLOBAL_var.src_code);
+	fclose(GLOBAL_var.src_code_p);
 
 	if (GLOBAL_var.line)
 		free(GLOBAL_var.line);

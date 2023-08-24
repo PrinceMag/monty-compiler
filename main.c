@@ -1,11 +1,9 @@
 #include "monty.h"
 #include <stdio.h>
+global_vars_t GLOBAL_var;
 
 int main(int argc, char **argv)
 {
-	size_t len = 0;
-	ssize_t read;
-	char *line = NULL;
 	stack_t *head = NULL;
 	GLOBAL_var.top = &head;
 
